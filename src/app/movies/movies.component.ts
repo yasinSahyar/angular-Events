@@ -1,4 +1,7 @@
 import { Component } from "@angular/core";
+import { Movies } from "../movie.datasource";
+import { Movie } from "../movie";
+
 
 @Component({
     selector: 'movies' ,
@@ -6,5 +9,16 @@ import { Component } from "@angular/core";
 })
 
 export class MoviesComponent {
+    title = 'Movie List';
+    movies = Movies;
+    selectedMovie: Movie | null = null; 
+
+    
+
+    onSelect(movie:Movie): void {
+        this.selectedMovie = movie;
+
+    }
+
 
 }

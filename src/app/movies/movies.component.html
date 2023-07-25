@@ -1,5 +1,37 @@
+<div class="card" *ngIf="selectedMovie"> <!--sadece uzerine tikladiginda sigme acilir-->
+    <div class="card-body">
+        <span class="badge bg-warning">
+            id: {{ selectedMovie.id}} name: {{ selectedMovie.name}}
+        </span>
+        <div *ngIf="selectedMovie" class="input-group">
+            <input type="text" [(ngModel)]="selectedMovie.name" class="form-control">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button">Update</button>
+            </div>
+        </div>
+    </div>
 
-<h2>Movie List</h2>
+</div>
 
-<movie></movie>
-<movie></movie>
+
+<div class="card">
+    <div class="card-header">
+        {{ title }}
+    </div>
+    <ul class="list-group list-group-flush">
+        <li *ngFor="let movie of movies" (click)="onSelect(movie)"
+           class="list-group-item " 
+           [class.active]="movie===selectedMovie">  
+            <span class="badge bg-primary">{{movie.id}}</span> {{movie.name}}
+            <span class="close"> X </span>
+        </li>
+
+    </ul>
+</div>      
+
+
+
+
+        
+<!--*ngFor=" " bir donge olusturup tum elmintlari listeleyip yazdirmak icin-->
+<!-- https://www.youtube.com/watch?v=k7MeckCB3yU&list=PLXuv2PShkuHwMKZf7EoB8XMohtvlFyyxC&index=21 -->
