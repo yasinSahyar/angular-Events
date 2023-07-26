@@ -1,0 +1,16 @@
+
+
+<div class="card" *ngIf="movie"> <!--sadece uzerine tikladiginda sigme acilir-->
+    <div class="card-body">
+        <span class="badge bg-warning">
+            id: {{ movie.id}} name: {{ movie.name}}
+        </span>
+        <div *ngIf="movie" class="input-group">
+            <input type="text" [(ngModel)]="movie.name" class="form-control">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button">Update</button>
+            </div>
+        </div>
+    </div>
+
+</div>
