@@ -4,32 +4,35 @@ import { MovieService } from "../movie.service";
 
 
 @Component({
-    selector: 'movies' ,
+    selector: 'movies',
     templateUrl: 'movies.component.html'
 })
 
 export class MoviesComponent {
     title = 'Movie List';
-    movies : Movie[] = [] ;
-    selectedMovie: Movie | null = null; 
+    movies: Movie[] = [];
+    selectedMovie: Movie | null = null;
 
-    constructor(private movieService:MovieService){}
+    constructor(private movieService: MovieService) { }
 
     ngOnInit(): void {
         this.getMovies();
         //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
         //Add 'implements OnInit' to the class. constructor dan sonra calisir anlaminda
-        
+
     }
 
-    
-    onSelect(movie:Movie): void {
+
+    onSelect(movie: Movie): void {
         this.selectedMovie = movie;
 
     }
 
     getMovies(): void {
-        this.movies = this.movieService.getMovies();
+        this.movieService.getMovies()
+            .subscribe(movies => {
+                this.movies = movies;
+            });
     }
 
 
